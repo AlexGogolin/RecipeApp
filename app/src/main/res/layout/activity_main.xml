@@ -12,37 +12,38 @@
         android:id="@+id/nav_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/main_margin"
-        android:layout_marginRight="@dimen/main_margin"
+        android:layout_marginStart="@dimen/main_margin"
+        android:layout_marginEnd="@dimen/main_margin"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            style="@style/StyleNavButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/half_main_margin"
             android:layout_marginEnd="@dimen/margin_between_nav_btn"
-            android:gravity="center"
-            android:text="@string/btn_categories"
+            android:layout_marginBottom="@dimen/half_main_margin"
+            android:layout_weight="1"
             android:backgroundTint="@color/btn_categories"
-            style="@style/StyleNavButton"/>
+            android:gravity="center"
+            android:text="@string/btn_categories" />
 
         <Button
             android:id="@+id/btn_favorites"
+            style="@style/StyleNavButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_main_margin"
+            android:layout_weight="1"
+            android:backgroundTint="@color/btn_favorites"
             android:gravity="center"
             android:text="@string/btn_favorites"
-            android:backgroundTint="@color/btn_favorites"
             app:icon="@drawable/ic_heart_empty"
-            app:iconSize="24dp"
             app:iconGravity="textEnd"
             app:iconPadding="8dp"
-            style="@style/StyleNavButton"/>
+            app:iconSize="24dp" />
 
     </LinearLayout>
 

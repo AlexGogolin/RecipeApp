@@ -1,15 +1,14 @@
 package com.example.recipesapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.recipesapp.databinding.ActivityHeroBinding
 import com.example.recipesapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding
-        get() = _binding ?: throw IllegalStateException("Binding for ActivityMainBinding must be not null")
+        get() = _binding
+            ?: throw IllegalStateException("Binding for ActivityMainBinding must be not null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
