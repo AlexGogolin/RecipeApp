@@ -3,4 +3,6 @@
     <dimen name="main_margin">16dp</dimen>
     <dimen name="half_main_margin">8dp</dimen>
     <dimen name="margin_between_nav_btn">4dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_padding">8dp</dimen>
 </resources>

@@ -42,8 +42,8 @@
             android:text="@string/btn_favorites"
             app:icon="@drawable/ic_heart_empty"
             app:iconGravity="textEnd"
-            app:iconPadding="8dp"
-            app:iconSize="24dp" />
+            app:iconPadding="@dimen/icon_padding"
+            app:iconSize="@dimen/icon_size" />
 
     </LinearLayout>
 
