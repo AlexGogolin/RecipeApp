@@ -9,20 +9,19 @@ import com.example.recipesapp.databinding.FragmentListCategoriesBinding
 
 class CategoriesListFragment : Fragment() {
 
-    private var _binding: FragmentListCategoriesBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentListCategoriesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentListCategoriesBinding.inflate(inflater, container, false)
-        return binding.root
+        binding = FragmentListCategoriesBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }
