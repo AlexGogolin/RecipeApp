@@ -17,7 +17,8 @@ class CategoriesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListCategoriesBinding.inflate(inflater, container, false)
-        return binding!!.root
+        val b = binding ?: error("binding is null")
+        return b.root
     }
 
     override fun onDestroyView() {
