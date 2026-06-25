@@ -32,5 +32,22 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
 
+        binding.btnCategories.setOnClickListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.mainContainer)
+            if (currentFragment !is CategoriesListFragment) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainContainer, CategoriesListFragment())
+                    .commit()
+            }
+        }
+        binding.btnFavorites.setOnClickListener {
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.mainContainer)
+            if (currentFragment !is FavoritesFragment) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainContainer, FavoritesFragment())
+                    .commit()
+            }
+        }
+
     }
 }
