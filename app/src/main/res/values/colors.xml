@@ -6,4 +6,6 @@
     <color name="navigationBar">#F4FAFF</color>
     <color name="btn_categories">#525DC0</color>
     <color name="btn_favorites">#E13E3E</color>
+    <color name="hero_title">#5F3678</color>
+    <color name="categories_descr">#666666</color>
 </resources>
