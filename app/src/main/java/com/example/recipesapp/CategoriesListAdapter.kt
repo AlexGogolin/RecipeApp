@@ -3,7 +3,7 @@ package com.example.recipesapp
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
+import com.example.recipesapp.databinding.ItemCategoryBinding
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,31 +14,30 @@ import com.example.recipesapp.model.Category
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val titletextView: TextView = view.findViewById(R.id.tv_categories_title)
-        val ImageView: ImageView = view.findViewById(R.id.item_imageView)
-        val descriptionTextView: TextView = view.findViewById(R.id.tv_categories_descr)
-    }
+    class ViewHolder(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(viewGroup.context)
-        val view = inflater.inflate(R.layout.item_category, viewGroup, false)
+        val binding = ItemCategoryBinding.inflate(inflater, viewGroup, false)
 
-        return ViewHolder(view)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val category: Category = dataSet[position]
-        viewHolder.titletextView.text = category.title
-        viewHolder.descriptionTextView.text = category.description
+        viewHolder.binding.tvCategoriesTitle.text = category.title
+        viewHolder.binding.tvCategoriesDescr.text = category.description
 
         val drawable = try {
-             Drawable.createFromStream(viewHolder.itemView.context.assets.open(category.imageUrl), null)
-        } catch (e: Exception){
+            val inputStream = viewHolder.itemView.context.assets.open(category.imageUrl)
+            inputStream.use { stream ->
+                Drawable.createFromStream(stream, null)
+            }
+        } catch (e: Exception) {
             Log.d("Warning!", "Image no found ${category.imageUrl}")
             null
         }
-        viewHolder.ImageView.setImageDrawable(drawable)
+        viewHolder.binding.itemImageView.setImageDrawable(drawable)
 
     }
 
