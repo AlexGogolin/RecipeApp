@@ -40,6 +40,8 @@
         tools:itemCount="6"
         android:layout_margin="8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"/>
+        app:spanCount="2"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:spanCount = "2"/>
 
 </LinearLayout>
