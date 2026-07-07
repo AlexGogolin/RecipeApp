@@ -43,6 +43,9 @@ class CategoriesListFragment : Fragment() {
         binding?.rvCategories?.adapter = adapter
     }
     private fun openRecipesByCategoryId() {
-
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.mainContainer, RecipesListFragment())
+            .addToBackStack(null)
+            .commit()
     }
 }
