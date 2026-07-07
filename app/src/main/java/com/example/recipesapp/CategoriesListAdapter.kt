@@ -5,14 +5,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import com.example.recipesapp.databinding.ItemCategoryBinding
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipesapp.model.Category
 
 
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
+
+    interface OnItemClickListener{
+        fun onItemClick()
+    }
+    var itemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        itemClickListener = listener
+    }
 
     class ViewHolder(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,6 +34,10 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
         val category: Category = dataSet[position]
         viewHolder.binding.tvCategoriesTitle.text = category.title
         viewHolder.binding.tvCategoriesDescr.text = category.description
+
+        viewHolder.binding.root.setOnClickListener{
+            itemClickListener?.onItemClick()
+        }
 
         val drawable = try {
             val inputStream = viewHolder.itemView.context.assets.open(category.imageUrl)

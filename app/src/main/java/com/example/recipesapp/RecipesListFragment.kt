@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.recipesapp.databinding.FragmentListCategoriesBinding
+import com.example.recipesapp.databinding.FragmentListRecipesBinding
 import com.example.recipesapp.model.STUB
 
-class CategoriesListFragment : Fragment() {
-
-    private var binding: FragmentListCategoriesBinding? = null
+class RecipesListFragment: Fragment() {
+    private var binding: FragmentListRecipesBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentListCategoriesBinding.inflate(inflater, container, false)
+        binding = FragmentListRecipesBinding.inflate(inflater, container, false)
         val b = binding ?: error("binding is null")
         return b.root
     }
@@ -33,16 +32,6 @@ class CategoriesListFragment : Fragment() {
     }
 
     private fun initRecycler() {
-        val categories = STUB.getCategories()
-        val adapter = CategoriesListAdapter(categories)
-        adapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
-            override fun onItemClick() {
-                openRecipesByCategoryId()
-            }
-        })
-        binding?.rvCategories?.adapter = adapter
-    }
-    private fun openRecipesByCategoryId() {
-
+        
     }
 }
