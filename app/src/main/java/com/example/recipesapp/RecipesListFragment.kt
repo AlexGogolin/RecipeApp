@@ -25,9 +25,15 @@ class RecipesListFragment: Fragment() {
         super.onDestroyView()
         binding = null
     }
+    var id: Int? = null
+    var name: String? = null
+    var image: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        id = arguments?.getInt("ARG_CATEGORY_ID")
+        name = arguments?.getString("ARG_CATEGORY_NAME")
+        image = arguments?.getString("ARG_CATEGORY_IMAGE_URL")
         initRecycler()
     }
 
