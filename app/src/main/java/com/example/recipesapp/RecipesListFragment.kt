@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import com.example.recipesapp.databinding.FragmentListRecipesBinding
 import com.example.recipesapp.model.STUB
 
-class RecipesListFragment: Fragment() {
+const val CATEGORY_ID = "ARG_CATEGORY_ID"
+const val CATEGORY_NAME = "ARG_CATEGORY_NAME"
+const val CATEGORY_IMAGE_URL = "ARG_CATEGORY_IMAGE_URL"
+
+class RecipesListFragment : Fragment() {
     private var binding: FragmentListRecipesBinding? = null
 
     override fun onCreateView(
@@ -25,19 +29,20 @@ class RecipesListFragment: Fragment() {
         super.onDestroyView()
         binding = null
     }
+
     var id: Int? = null
     var name: String? = null
     var image: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        id = arguments?.getInt("ARG_CATEGORY_ID")
-        name = arguments?.getString("ARG_CATEGORY_NAME")
-        image = arguments?.getString("ARG_CATEGORY_IMAGE_URL")
+        id = arguments?.getInt(CATEGORY_ID)
+        name = arguments?.getString(CATEGORY_NAME)
+        image = arguments?.getString(CATEGORY_IMAGE_URL)
         initRecycler()
     }
 
     private fun initRecycler() {
-        
+
     }
 }
