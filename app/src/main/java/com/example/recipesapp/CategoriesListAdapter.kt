@@ -13,7 +13,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     interface OnItemClickListener{
-        fun onItemClick()
+        fun onItemClick(categoryId: Int)
     }
     var itemClickListener: OnItemClickListener? = null
 
@@ -36,7 +36,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
         viewHolder.binding.tvCategoriesDescr.text = category.description
 
         viewHolder.binding.root.setOnClickListener{
-            itemClickListener?.onItemClick()
+            itemClickListener?.onItemClick(category.id)
         }
 
         val drawable = try {

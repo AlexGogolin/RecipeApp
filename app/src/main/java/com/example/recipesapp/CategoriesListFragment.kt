@@ -36,15 +36,26 @@ class CategoriesListFragment : Fragment() {
         val categories = STUB.getCategories()
         val adapter = CategoriesListAdapter(categories)
         adapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
-            override fun onItemClick() {
-                openRecipesByCategoryId()
+            override fun onItemClick(categoryId: Int) {
+                openRecipesByCategoryId(categoryId)
             }
         })
         binding?.rvCategories?.adapter = adapter
     }
-    private fun openRecipesByCategoryId() {
+    private fun openRecipesByCategoryId(categoryId: Int) {
+        val categories = STUB.getCategories()
+        val category = categories.find { it.id == categoryId}
+        val categoryName = category?.title
+        val categoryImageUrl = category?.imageUrl
+        val bundle = Bundle().apply{
+            putInt(CATEGORY_ID, categoryId)
+            putString(CATEGORY_NAME, categoryName)
+            putString(CATEGORY_IMAGE_URL, categoryImageUrl)
+        }
+        val recipeFragment = RecipesListFragment()
+        recipeFragment.arguments = bundle
         parentFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, RecipesListFragment())
+            .replace(R.id.mainContainer, recipeFragment)
             .addToBackStack(null)
             .commit()
     }
