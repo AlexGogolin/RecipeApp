@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.databinding.FragmentListCategoriesBinding
 import com.example.recipesapp.model.STUB
 
@@ -40,6 +41,7 @@ class CategoriesListFragment : Fragment() {
                 openRecipesByCategoryId(categoryId)
             }
         })
+        binding?.rvCategories?.layoutManager = LinearLayoutManager(requireContext())
         binding?.rvCategories?.adapter = adapter
     }
     private fun openRecipesByCategoryId(categoryId: Int) {
