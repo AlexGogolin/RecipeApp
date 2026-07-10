@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.databinding.FragmentListRecipesBinding
 import com.example.recipesapp.model.STUB
 
@@ -58,14 +59,15 @@ class RecipesListFragment : Fragment() {
     }
 
     private fun initRecycler() {
-        id?.let { recipesSafeId ->
-            val recipes = STUB.getRecipesByCategoryId(recipesSafeId)
+        id?.let {
+            val recipes = STUB.getRecipesByCategoryId(0)
             val adapter = RecipesListAdapter(recipes)
             adapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
                 override fun onItemClick(recipeId: Int) {
                     openRecipeByRecipeId(recipeId)
                 }
             })
+            binding?.rvRecipes?.layoutManager = LinearLayoutManager(requireContext())
             binding?.rvRecipes?.adapter = adapter
         }
 

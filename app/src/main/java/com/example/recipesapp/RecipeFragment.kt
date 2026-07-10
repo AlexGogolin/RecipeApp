@@ -19,4 +19,9 @@ class RecipeFragment : Fragment() {
         val b = binding ?: error("binding is null")
         return b.root
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }
