@@ -6,14 +6,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.databinding.FragmentListRecipesBinding
 import com.example.recipesapp.model.STUB
+import com.example.recipesapp.model.STUB.getRecipeById
 
 const val CATEGORY_ID = "ARG_CATEGORY_ID"
 const val CATEGORY_NAME = "ARG_CATEGORY_NAME"
 const val CATEGORY_IMAGE_URL = "ARG_CATEGORY_IMAGE_URL"
+
+const val ARG_RECIPE = "ARG_RECIPE"
 
 class RecipesListFragment : Fragment() {
     private var binding: FragmentListRecipesBinding? = null
@@ -74,10 +78,14 @@ class RecipesListFragment : Fragment() {
     }
 
     private fun openRecipeByRecipeId(recipeId: Int) {
+        val recipe = getRecipeById(recipeId)
+        val bundle = bundleOf(ARG_RECIPE to recipe)
         val recipeItem = RecipeFragment()
+        recipeItem.arguments = bundle
         parentFragmentManager.beginTransaction()
             .replace(R.id.mainContainer, recipeItem)
             .addToBackStack(null)
             .commit()
+
     }
 }
