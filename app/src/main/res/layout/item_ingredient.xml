@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvIngredientName"
+        style="@style/StyleIngredientItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/tvIngredientQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="15dp"
+        tools:text="Какой-то ингредиент Какой-то ингредиент" />
+
+    <TextView
+        android:id="@+id/tvIngredientQuantity"
+        style="@style/StyleIngredientItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/tvUnitOfMeasure"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingRight="4dp"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/tvUnitOfMeasure"
+        style="@style/StyleIngredientItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="шт" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

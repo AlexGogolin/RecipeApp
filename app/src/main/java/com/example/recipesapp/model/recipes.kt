@@ -35,6 +35,7 @@ object STUB{
             imageUrl = "burger.png"
         )
     )
+
     fun getCategories() = categories
 
     fun getRecipesByCategoryId(categoryId: Int): List<Recipe>{
