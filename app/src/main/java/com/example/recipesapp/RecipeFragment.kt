@@ -31,7 +31,7 @@ class RecipeFragment : Fragment() {
         } else {
             arguments?.getParcelable<Recipe>(ARG_RECIPE)
         }
-        if (recipe != null){
+        recipe?.let{
             initUI(recipe)
             initRecycler(recipe)
         }
@@ -46,8 +46,10 @@ class RecipeFragment : Fragment() {
         val ingredientsAdapter = IngredientsAdapter(recipe.ingredients)
         val methodAdapter = MethodAdapter(recipe.method)
         val divider = MaterialDividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
+        binding?.rvIngredients?.layoutManager = LinearLayoutManager(requireContext())
         binding?.rvIngredients?.adapter = ingredientsAdapter
         binding?.rvIngredients?.addItemDecoration(divider)
+        binding?.rvMethod?.layoutManager = LinearLayoutManager(requireContext())
         binding?.rvMethod?.adapter = methodAdapter
         binding?.rvMethod?.addItemDecoration(divider)
     }
