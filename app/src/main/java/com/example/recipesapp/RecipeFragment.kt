@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.databinding.FragmentRecipeBinding
 import com.example.recipesapp.model.Recipe
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class RecipeFragment : Fragment() {
     private var binding: FragmentRecipeBinding? = null
@@ -30,12 +32,27 @@ class RecipeFragment : Fragment() {
             arguments?.getParcelable<Recipe>(ARG_RECIPE)
         }
         if (recipe != null){
-            binding?.tvRecipeHeader?.text = recipe.title
+            initUI(recipe)
+            initRecycler(recipe)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    private fun initRecycler(recipe: Recipe) {
+        val ingredientsAdapter = IngredientsAdapter(recipe.ingredients)
+        val methodAdapter = MethodAdapter(recipe.method)
+        val divider = MaterialDividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
+        binding?.rvIngredients?.adapter = ingredientsAdapter
+        binding?.rvIngredients?.addItemDecoration(divider)
+        binding?.rvMethod?.adapter = methodAdapter
+        binding?.rvMethod?.addItemDecoration(divider)
+    }
+
+    private fun initUI(recipe: Recipe){
+        binding?.tvRecipeHeader?.text = recipe.title
     }
 }

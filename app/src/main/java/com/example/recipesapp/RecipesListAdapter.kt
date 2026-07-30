@@ -12,12 +12,13 @@ import com.example.recipesapp.model.Recipe
 class RecipesListAdapter(private val dataSet: List<Recipe>) :
     RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
 
-    interface OnItemClickListener{
+    interface OnItemClickListener {
         fun onItemClick(recipeId: Int)
     }
+
     var itemClickListener: OnItemClickListener? = null
 
-    fun setOnItemClickListener(listener: OnItemClickListener){
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         itemClickListener = listener
     }
 
@@ -34,7 +35,7 @@ class RecipesListAdapter(private val dataSet: List<Recipe>) :
         val recipe: Recipe = dataSet[position]
         viewHolder.binding.tvRecipeTitle.text = recipe.title
 
-        viewHolder.binding.root.setOnClickListener{
+        viewHolder.binding.root.setOnClickListener {
             itemClickListener?.onItemClick(recipe.id)
         }
 
