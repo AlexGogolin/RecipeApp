@@ -22,7 +22,7 @@ class IngredientsAdapter(private val dataSet: List<Ingredient>, private var quan
 
     override fun onBindViewHolder(
         holder: ViewHolder,
-        position: Int
+        position: Int,
     ) {
         val ingredient: Ingredient = dataSet[position]
         holder.binding.tvIngredientName.text = ingredient.description
