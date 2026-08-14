@@ -18,7 +18,7 @@ class RecipeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentRecipeBinding.inflate(inflater, container, false)
         val b = binding ?: error("binding is null")
