@@ -26,13 +26,20 @@ class IngredientsAdapter(private val dataSet: List<Ingredient>, private var quan
     ) {
         val ingredient: Ingredient = dataSet[position]
         holder.binding.tvIngredientName.text = ingredient.description
-        val portions: Double = ingredient.quantity.toDouble() * quantity
-        if (portions % 1 == 0.0) {
-            holder.binding.tvIngredientQuantity.text = portions.toInt().toString()
-        }else{
-            holder.binding.tvIngredientQuantity.text = "%.1f".format(portions)
-        }
         holder.binding.tvUnitOfMeasure.text = ingredient.unitOfMeasure
+
+        val quantityText = ingredient.quantity.toDoubleOrNull()
+        if (quantityText == null){
+            holder.binding.tvIngredientQuantity.text = ingredient.quantity
+        }else{
+            val portions = quantityText * quantity
+            if (portions % 1 == 0.0) {
+                holder.binding.tvIngredientQuantity.text = portions.toInt().toString()
+            }else{
+                holder.binding.tvIngredientQuantity.text = "%.1f".format(portions)
+            }
+        }
+
     }
 
     override fun getItemCount(): Int {
