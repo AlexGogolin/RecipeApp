@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     id("kotlin-parcelize")
 }
-
 android {
     namespace = "com.example.recipesapp"
     compileSdk {
@@ -51,4 +50,6 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation(libs.kotlin.parcelize.runtime)
+    add("kotlinCompilerPluginClasspath", libs.kotlin.parcelize.compiler)
 }
