@@ -8,4 +8,5 @@
     <color name="btn_favorites">#E13E3E</color>
     <color name="hero_title">#5F3678</color>
     <color name="categories_descr">#666666</color>
+    <color name="seekbar_way">#A1A9F9</color>
 </resources>
