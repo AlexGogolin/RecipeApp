@@ -30,6 +30,10 @@
         <item name="android:fontFamily">@font/montserrat_alternates_semi_bold</item>
         <item name="android:textColor">@color/categories_descr</item>
     </style>
+    <style name="styleSeekBar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:thumb">@drawable/shape_seekbar_thumb</item>
+        <item name="android:progressDrawable">@drawable/shape_seekbar_progress</item>
+    </style>
     <style name="StyleCategoriesDescr" parent="TextAppearance.AppCompat">
         <item name="android:textSize">10sp</item>
         <item name="android:fontFamily">@font/montserrat_alternates_semi_bold</item>
