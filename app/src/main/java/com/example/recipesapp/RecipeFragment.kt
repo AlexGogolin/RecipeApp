@@ -27,15 +27,16 @@ class RecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recipe: Recipe? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arguments?.getParcelable(ARG_RECIPE, Recipe::class.java)
+
+        val args = requireArguments()
+        val recipe = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            requireNotNull(args.getParcelable(ARG_RECIPE, Recipe::class.java))
         } else {
-            arguments?.getParcelable<Recipe>(ARG_RECIPE)
+            requireNotNull(args.getParcelable<Recipe>(ARG_RECIPE))
         }
-        recipe?.let{
-            initUI(recipe)
-            initRecycler(recipe)
-        }
+
+        initUI(recipe)
+        initRecycler(recipe)
     }
 
     override fun onDestroyView() {
@@ -73,7 +74,11 @@ class RecipeFragment : Fragment() {
         })
     }
 
-    private fun initUI(recipe: Recipe){
+    private fun initUI(recipe: Recipe) {
         binding?.tvRecipeHeader?.text = recipe.title
+        binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart_empty)
+        binding?.ibFavoriteBtn?.setOnClickListener {
+            binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart)
+        }
     }
 }
