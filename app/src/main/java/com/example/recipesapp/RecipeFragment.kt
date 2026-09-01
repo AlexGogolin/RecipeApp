@@ -1,5 +1,6 @@
 package com.example.recipesapp
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -75,10 +76,42 @@ class RecipeFragment : Fragment() {
     }
 
     private fun initUI(recipe: Recipe) {
-        binding?.tvRecipeHeader?.text = recipe.title
-        binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart_empty)
-        binding?.ibFavoriteBtn?.setOnClickListener {
+        val isFavorites = getFavorites().contains(recipe.id.toString())
+        if (isFavorites) {
             binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart)
+        } else {
+            binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart_empty)
+        }
+        binding?.tvRecipeHeader?.text = recipe.title
+
+        binding?.ibFavoriteBtn?.setOnClickListener {
+            val favorites = getFavorites()
+            val id = recipe.id.toString()
+            if (favorites.contains(id)) {
+                favorites.remove(id)
+                binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart_empty)
+            } else {
+                favorites.add(id)
+                binding?.ibFavoriteBtn?.setImageResource(R.drawable.ic_heart)
+            }
+            saveFavorites(favorites)
         }
     }
+
+    private fun saveFavorites(favorites: Set<String>) {
+        val sharedPrefs =
+            requireContext().getSharedPreferences(FAVORITES_FILE, Context.MODE_PRIVATE)
+        sharedPrefs.edit()
+            .putStringSet(FAVORITES_LIST, favorites)
+            .apply()
+
+    }
+
+    private fun getFavorites(): MutableSet<String> {
+        val sharedPrefs =
+            requireContext().getSharedPreferences(FAVORITES_FILE, Context.MODE_PRIVATE)
+        val stored = sharedPrefs.getStringSet(FAVORITES_LIST, emptySet())
+        return HashSet(stored)
+    }
+
 }

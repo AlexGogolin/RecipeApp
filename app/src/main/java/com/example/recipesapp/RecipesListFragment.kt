@@ -18,6 +18,9 @@ const val CATEGORY_NAME = "ARG_CATEGORY_NAME"
 const val CATEGORY_IMAGE_URL = "ARG_CATEGORY_IMAGE_URL"
 
 const val ARG_RECIPE = "ARG_RECIPE"
+const val FAVORITES_FILE = "FAVORITES_FILE"
+const val FAVORITES_LIST = "FAVORITES_LIST"
+
 
 class RecipesListFragment : Fragment() {
     private var binding: FragmentListRecipesBinding? = null
