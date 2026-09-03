@@ -1,4 +1,4 @@
-package com.example.recipesapp.data.model
+package com.example.recipesapp.model
 
 data class Category(
     val id: Int,

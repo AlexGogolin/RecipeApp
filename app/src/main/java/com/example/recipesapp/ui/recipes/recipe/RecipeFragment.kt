@@ -1,4 +1,4 @@
-package com.example.recipesapp.ui.recipe
+package com.example.recipesapp.ui.recipes.recipe
 
 import android.content.Context
 import android.os.Build
@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.R
 import com.example.recipesapp.data.FAVORITES_FILE
 import com.example.recipesapp.data.FAVORITES_LIST
-import com.example.recipesapp.data.model.Recipe
 import com.example.recipesapp.databinding.FragmentRecipeBinding
+import com.example.recipesapp.model.Recipe
 import com.example.recipesapp.ui.ARG_RECIPE
 import com.google.android.material.divider.MaterialDividerItemDecoration
 

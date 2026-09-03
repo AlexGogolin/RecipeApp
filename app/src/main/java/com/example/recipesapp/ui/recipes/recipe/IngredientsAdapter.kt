@@ -1,10 +1,10 @@
-package com.example.recipesapp.ui.recipe
+package com.example.recipesapp.ui.recipes.recipe
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipesapp.data.model.Ingredient
 import com.example.recipesapp.databinding.ItemIngredientBinding
+import com.example.recipesapp.model.Ingredient
 
 class IngredientsAdapter(private val dataSet: List<Ingredient>, private var quantity: Int = 1) :
     RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {

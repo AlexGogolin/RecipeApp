@@ -1,4 +1,4 @@
-package com.example.recipesapp.ui.recipes
+package com.example.recipesapp.ui.recipes.recipes_list
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -17,7 +17,7 @@ import com.example.recipesapp.ui.ARG_RECIPE
 import com.example.recipesapp.ui.CATEGORY_ID
 import com.example.recipesapp.ui.CATEGORY_IMAGE_URL
 import com.example.recipesapp.ui.CATEGORY_NAME
-import com.example.recipesapp.ui.recipe.RecipeFragment
+import com.example.recipesapp.ui.recipes.recipe.RecipeFragment
 
 class RecipesListFragment : Fragment() {
     private var binding: FragmentListRecipesBinding? = null
@@ -64,7 +64,7 @@ class RecipesListFragment : Fragment() {
 
     private fun initRecycler() {
         id?.let {
-            val recipes = STUB.getRecipesByCategoryId(0)
+            val recipes = STUB.getRecipesByCategoryId(it)
             val adapter = RecipesListAdapter(recipes)
             adapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
                 override fun onItemClick(recipeId: Int) {

@@ -1,4 +1,4 @@
-package com.example.recipesapp.ui.favorites
+package com.example.recipesapp.ui.recipes.favorites
 
 import android.content.Context
 import android.os.Bundle
@@ -15,8 +15,8 @@ import com.example.recipesapp.data.STUB
 import com.example.recipesapp.data.STUB.getRecipeById
 import com.example.recipesapp.databinding.FragmentFavoritesBinding
 import com.example.recipesapp.ui.ARG_RECIPE
-import com.example.recipesapp.ui.recipe.RecipeFragment
-import com.example.recipesapp.ui.recipes.RecipesListAdapter
+import com.example.recipesapp.ui.recipes.recipe.RecipeFragment
+import com.example.recipesapp.ui.recipes.recipes_list.RecipesListAdapter
 
 class FavoritesFragment : Fragment() {
 
