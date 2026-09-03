@@ -12,7 +12,7 @@ import com.example.recipesapp.databinding.FragmentListCategoriesBinding
 import com.example.recipesapp.ui.CATEGORY_ID
 import com.example.recipesapp.ui.CATEGORY_IMAGE_URL
 import com.example.recipesapp.ui.CATEGORY_NAME
-import com.example.recipesapp.ui.recipes.RecipesListFragment
+import com.example.recipesapp.ui.recipes.recipesList.RecipesListFragment
 
 class CategoriesListFragment : Fragment() {
 
