@@ -1,23 +1,23 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.categories
 
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
-import com.example.recipesapp.databinding.ItemCategoryBinding
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipesapp.model.Category
-
+import com.example.recipesapp.data.model.Category
+import com.example.recipesapp.databinding.ItemCategoryBinding
 
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
-    interface OnItemClickListener{
+    interface OnItemClickListener {
         fun onItemClick(categoryId: Int)
     }
+
     var itemClickListener: OnItemClickListener? = null
 
-    fun setOnItemClickListener(listener: OnItemClickListener){
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         itemClickListener = listener
     }
 
@@ -35,7 +35,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
         viewHolder.binding.tvCategoriesTitle.text = category.title
         viewHolder.binding.tvCategoriesDescr.text = category.description
 
-        viewHolder.binding.root.setOnClickListener{
+        viewHolder.binding.root.setOnClickListener {
             itemClickListener?.onItemClick(category.id)
         }
 
@@ -49,9 +49,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
             null
         }
         viewHolder.binding.itemImageView.setImageDrawable(drawable)
-
     }
 
     override fun getItemCount() = dataSet.size
-
 }

@@ -1,11 +1,11 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.recipe
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipesapp.databinding.ItemMethodBinding
 
-class MethodAdapter(private val dataSet: List<String>):
+class MethodAdapter(private val dataSet: List<String>) :
     RecyclerView.Adapter<MethodAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -15,7 +15,7 @@ class MethodAdapter(private val dataSet: List<String>):
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemMethodBinding.inflate(inflater, parent, false)
 
-        return MethodAdapter.ViewHolder(binding)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(
@@ -31,6 +31,4 @@ class MethodAdapter(private val dataSet: List<String>):
     }
 
     class ViewHolder(val binding: ItemMethodBinding) : RecyclerView.ViewHolder(binding.root)
-
-
 }

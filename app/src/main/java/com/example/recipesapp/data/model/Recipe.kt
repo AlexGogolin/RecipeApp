@@ -1,4 +1,4 @@
-package com.example.recipesapp.model
+package com.example.recipesapp.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -10,4 +10,4 @@ data class Recipe(
     val ingredients: List<Ingredient>,
     val method: List<String>,
     val imageUrl: String,
-): Parcelable
+) : Parcelable

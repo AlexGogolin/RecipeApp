@@ -1,13 +1,15 @@
-package com.example.recipesapp.model
+package com.example.recipesapp.data
 
-import kotlin.collections.emptyList
+import com.example.recipesapp.data.model.Category
+import com.example.recipesapp.data.model.Ingredient
+import com.example.recipesapp.data.model.Recipe
 
-object STUB{
+object STUB {
     private val categories: List<Category> = listOf(
         Category(1, "Бургеры", "Рецепты всех популярных видов бургеров", "burger.png"),
-        Category(2,"Десерты","Самые вкусные рецепты десертов специально для вас", "dessert.png"),
-        Category(3,"Рыба", "Печеная, жареная, сушеная, любая рыба на твой вкус", "fish.png"),
-        Category(4,"Пицца","Пицца на любой вкус и цвет. Лучшая подборка для тебя", "pizza.png"),
+        Category(2, "Десерты", "Самые вкусные рецепты десертов специально для вас", "dessert.png"),
+        Category(3, "Рыба", "Печеная, жареная, сушеная, любая рыба на твой вкус", "fish.png"),
+        Category(4, "Пицца", "Пицца на любой вкус и цвет. Лучшая подборка для тебя", "pizza.png"),
     )
     private val burgerRecipes: List<Recipe> = listOf(
         Recipe(
@@ -23,29 +25,30 @@ object STUB{
                 Ingredient("2.0", "ст. л", "горчица"),
                 Ingredient("2.0", "ст. л", "кетчуп"),
                 Ingredient("по вкусу", "", "соль и черный перец"),
-
             ),
-            method =listOf(
+            method = listOf(
                 "1. В глубокой миске смешайте говяжий фарш, лук, чеснок, соль и перец. Разделите фарш на 4 равные части и сформируйте котлеты.",
                 "2. Разогрейте сковороду на среднем огне. Обжаривайте котлеты с каждой стороны в течение 4-5 минут или до желаемой степени прожарки.",
                 "3. В то время как котлеты готовятся, подготовьте булочки. Разрежьте их пополам и обжарьте на сковороде до золотистой корочки.",
                 "4. Смазать нижние половинки булочек горчицей и кетчупом, затем положите лист салата, котлету, кольца помидора и закройте верхней половинкой булочки.",
-                "5. Подавайте бургеры горячими с картофельными чипсами или картофельным пюре."
+                "5. Подавайте бургеры горячими с картофельными чипсами или картофельным пюре.",
             ),
-            imageUrl = "burger.png"
+            imageUrl = "burger.png",
         )
     )
 
     fun getCategories() = categories
 
-    fun getRecipesByCategoryId(categoryId: Int): List<Recipe>{
-        if (categoryId == 0){
-            return  burgerRecipes
-        } else  return emptyList()
+    fun getRecipesByCategoryId(categoryId: Int): List<Recipe> {
+        return if (categoryId == 0) {
+            burgerRecipes
+        } else {
+            emptyList()
+        }
     }
 
-    fun getRecipeById(recipeId: Int): Recipe?{
-        return burgerRecipes.find {it.id == recipeId}
+    fun getRecipeById(recipeId: Int): Recipe? {
+        return burgerRecipes.find { it.id == recipeId }
     }
 
     fun getRecipesByIds(ids: Set<Int>): List<Recipe> {

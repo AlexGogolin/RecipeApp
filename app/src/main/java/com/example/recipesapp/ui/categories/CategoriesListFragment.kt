@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.categories
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recipesapp.R
+import com.example.recipesapp.data.STUB
 import com.example.recipesapp.databinding.FragmentListCategoriesBinding
-import com.example.recipesapp.model.STUB
+import com.example.recipesapp.ui.CATEGORY_ID
+import com.example.recipesapp.ui.CATEGORY_IMAGE_URL
+import com.example.recipesapp.ui.CATEGORY_NAME
+import com.example.recipesapp.ui.recipes.RecipesListFragment
 
 class CategoriesListFragment : Fragment() {
 
@@ -44,12 +49,13 @@ class CategoriesListFragment : Fragment() {
         binding?.rvCategories?.layoutManager = LinearLayoutManager(requireContext())
         binding?.rvCategories?.adapter = adapter
     }
+
     private fun openRecipesByCategoryId(categoryId: Int) {
         val categories = STUB.getCategories()
-        val category = categories.find { it.id == categoryId}
+        val category = categories.find { it.id == categoryId }
         val categoryName = category?.title
         val categoryImageUrl = category?.imageUrl
-        val bundle = Bundle().apply{
+        val bundle = Bundle().apply {
             putInt(CATEGORY_ID, categoryId)
             putString(CATEGORY_NAME, categoryName)
             putString(CATEGORY_IMAGE_URL, categoryImageUrl)

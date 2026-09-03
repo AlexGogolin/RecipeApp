@@ -1,4 +1,4 @@
-package com.example.recipesapp
+package com.example.recipesapp.ui.recipe
 
 import android.content.Context
 import android.os.Build
@@ -9,8 +9,12 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recipesapp.R
+import com.example.recipesapp.data.FAVORITES_FILE
+import com.example.recipesapp.data.FAVORITES_LIST
+import com.example.recipesapp.data.model.Recipe
 import com.example.recipesapp.databinding.FragmentRecipeBinding
-import com.example.recipesapp.model.Recipe
+import com.example.recipesapp.ui.ARG_RECIPE
 import com.google.android.material.divider.MaterialDividerItemDecoration
 
 class RecipeFragment : Fragment() {
@@ -66,11 +70,9 @@ class RecipeFragment : Fragment() {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
             }
         })
     }
@@ -104,14 +106,12 @@ class RecipeFragment : Fragment() {
         sharedPrefs.edit()
             .putStringSet(FAVORITES_LIST, favorites)
             .apply()
-
     }
 
     private fun getFavorites(): MutableSet<String> {
         val sharedPrefs =
             requireContext().getSharedPreferences(FAVORITES_FILE, Context.MODE_PRIVATE)
         val stored = sharedPrefs.getStringSet(FAVORITES_LIST, emptySet())
-        return HashSet(stored)
+        return HashSet(stored ?: emptySet())
     }
-
 }
