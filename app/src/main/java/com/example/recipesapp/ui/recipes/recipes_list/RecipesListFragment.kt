@@ -64,7 +64,7 @@ class RecipesListFragment : Fragment() {
 
     private fun initRecycler() {
         id?.let {
-            val recipes = STUB.getRecipesByCategoryId(0)
+            val recipes = STUB.getRecipesByCategoryId(it)
             val adapter = RecipesListAdapter(recipes)
             adapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
                 override fun onItemClick(recipeId: Int) {
